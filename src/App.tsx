@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+
+
+import {HashRouter as Router, Route,  Switch} from 'react-router-dom'
+
+
+
+import AcceptUser from "./adminClient/sections/pages/AcceptUser";
+import NavBar from './adminClient/sections/components/headerComponents/navbar/NavBar';
+import Footer from './adminClient/sections/components/headerComponents/Footer';
+import Support from "./adminClient/sections/pages/Support";
+import EditOrDeleteUser from "./adminClient/sections/pages/EditOrDeleteUser";
+import Profile from "./adminClient/sections/pages/Profile";
+import SearchOrAddUser from "./adminClient/sections/pages/SearchOrAddUser";
+import LandingPage from "./adminClient/sections/pages/LandingPage";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <NavBar/>
+        <Switch>
+          <Route exact path="/home" component={LandingPage}/>
+          <Route exact path="/acceptUser" component={AcceptUser}/>
+          <Route exact path="/searchOrAddUser" component={SearchOrAddUser}/>
+          <Route exact path="/profile" component={Profile}/>
+          <Route exact path="/editOrDeleteUser" component={EditOrDeleteUser}/>
+          <Route exact path="/support" component={Support}/>
+        </Switch>
+        <Footer/>
+      </Router>
   );
 }
 
